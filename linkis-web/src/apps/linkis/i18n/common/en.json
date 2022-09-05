@@ -93,8 +93,8 @@
       "tableColumns": {
         "instanceName": "Instance Name",
         "initiator": "Initiator",
-        "engineInstance": "Engine instance",
-        "engineType": "Engine type",
+        "engineInstance": "Engine Instance",
+        "engineType": "Engine Type",
         "serveType": "Serve Type",
         "appType": "App Type",
         "taskID": "JobID",
@@ -108,7 +108,7 @@
         "usedResources": "Used resources",
         "maximumAvailableResources": "Maximum available resources",
         "minimumAvailableResources": "Minimum available resources",
-        "startTime": "Start time",
+        "startTime": "Start Time",
         "costTime": "Time Elapsed",
         "executeApplicationName": "Execution Engine",
         "requestApplicationName": "Created From",
@@ -143,16 +143,24 @@
           "children": {
             "globalHistory": "Global History",
             "resource": "Resource Manager",
-            "resourceEngineConnList": "History Engine List",
+            "resourceEngineConnList": "History Engine",
             "setting": "Settings",
             "dateReport": "Global Variables",
             "globalValiable": "Frequently Asked",
-            "microserviceManage": "Microservice management",
+            "microserviceManage": "Microservice Management",
             "ECMManage": "ECM Management",
             "udfFunctionTitle": "UDF Function",
             "udfFunctionManage": "UDF Management",
             "dataSourceManage": "DataSource Manage",
-            "userResourceManagement": "User Resource Management"
+            "userResourceManagement": "User Resource Management",
+            "errorCode": "Error Manage",
+            "gatewayAuthToken": "Gateway Auth Token Manage",
+            "rmExternalResourceProvider": "External Resource Provider Manage",
+            "udfManager": "UDF User Manage",
+            "udfTree": "UDF Tree",
+            "datasourceAccess": "Data source access permissions",
+            "datasourceEnv": "Datasource Environment",
+            "datasourceType": "Datasource Type"
           }
         }
       },
@@ -315,6 +323,10 @@
         "used": "Available",
         "commentValue": "Roll back from version {text}",
         "undefinedVersion": "Cannot find the version of DataSource"
+      },
+      "basedata": {
+        "add": "add",
+        "remove": "remove"
       }
     }
   }

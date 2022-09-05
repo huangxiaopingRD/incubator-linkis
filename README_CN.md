@@ -1,5 +1,5 @@
 <h2 align="center">
-  Apache Linkis(Incubating)
+  Apache Linkis
 </h2>
 
 <p align="center">

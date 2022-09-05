@@ -232,36 +232,11 @@ export default {
               }, this.$t('message.linkis.viewlog')),
               h('Button', {
                 props: {
-                  type: 'primary',
+                  type: 'error',
                   size: 'small'
                 },
                 style: {
                   marginRight: '5px'
-                },
-                on: {
-                  click: () => {
-                    this.isTagEdit = true;
-                    let obj = {};
-                    obj.instance = params.row.instance;
-                    let labels = params.row.labels || [];
-                    // 将标签数据转换成组件可渲染格式
-                    obj.labels = labels.map(item => {
-                      return {
-                        key: item.labelKey,
-                        value: item.stringValue,
-                        modifiable: item.modifiable || false,
-                      }
-                    })
-                    obj.emStatus = params.row.nodeStatus;
-                    obj.applicationName = params.row.applicationName;
-                    this.formItem = Object.assign(this.formItem, obj)
-                  }
-                }
-              }, this.$t('message.linkis.tagEdit')),
-              h('Button', {
-                props: {
-                  type: 'error',
-                  size: 'small'
                 },
                 on: {
                   click: () => {
@@ -287,7 +262,32 @@ export default {
                     })
                   }
                 }
-              }, this.$t('message.linkis.stop'))
+              }, this.$t('message.linkis.stop')),
+              h('Button', {
+                props: {
+                  type: 'primary',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    this.isTagEdit = true;
+                    let obj = {};
+                    obj.instance = params.row.instance;
+                    let labels = params.row.labels || [];
+                    // 将标签数据转换成组件可渲染格式
+                    obj.labels = labels.map(item => {
+                      return {
+                        key: item.labelKey,
+                        value: item.stringValue,
+                        modifiable: item.modifiable || false,
+                      }
+                    })
+                    obj.emStatus = params.row.nodeStatus;
+                    obj.applicationName = params.row.applicationName;
+                    this.formItem = Object.assign(this.formItem, obj)
+                  }
+                }
+              }, this.$t('message.linkis.tagEdit'))
             ]);
           }
         }

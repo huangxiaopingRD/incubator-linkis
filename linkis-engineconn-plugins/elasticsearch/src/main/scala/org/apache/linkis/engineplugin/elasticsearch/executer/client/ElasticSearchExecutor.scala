@@ -14,17 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.linkis.engineplugin.elasticsearch.executer.client
-
-import org.apache.linkis.common.utils.Logging
-import org.apache.linkis.engineplugin.elasticsearch.executer.client.impl.ElasticSearchExecutorImpl
-import org.apache.linkis.scheduler.executer.ExecuteResponse
 
 import java.io.IOException
 import java.util
 
-import scala.collection.JavaConverters._
+import org.apache.linkis.common.utils.Logging
+import org.apache.linkis.engineplugin.elasticsearch.executer.client.impl.ElasticSearchExecutorImpl
 
 trait ElasticSearchExecutor extends Logging {
 

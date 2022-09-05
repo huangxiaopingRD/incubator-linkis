@@ -20,64 +20,54 @@ package org.apache.linkis.datasourcemanager.core.dao;
 import org.apache.linkis.datasourcemanager.common.domain.DataSourceEnv;
 import org.apache.linkis.datasourcemanager.core.vo.DataSourceEnvVo;
 
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 /** Data source dao */
 public interface DataSourceEnvDao {
 
-  /**
-   * View details of data source environment information
-   *
-   * @param dataSourceEnvId env id
-   * @return
-   */
-  DataSourceEnv selectOneDetail(Long dataSourceEnvId);
+    /**
+     * View details of data source environment information
+     *
+     * @param dataSourceEnvId env id
+     * @return
+     */
+    DataSourceEnv selectOneDetail(Long dataSourceEnvId);
 
-  /**
-   * Insert one
-   *
-   * @param dataSourceEnv environment
-   */
-  void insertOne(DataSourceEnv dataSourceEnv);
+    /**
+     * Insert one
+     *
+     * @param dataSourceEnv environment
+     */
+    void insertOne(DataSourceEnv dataSourceEnv);
 
-  /**
-   * List all by type id
-   *
-   * @param dataSourceTypeId type id
-   * @return
-   */
-  List<DataSourceEnv> listByTypeId(Long dataSourceTypeId);
+    /**
+     * List all by type id
+     *
+     * @param dataSourceTypeId type id
+     * @return
+     */
+    List<DataSourceEnv> listByTypeId(Long dataSourceTypeId);
 
-  /**
-   * Remove one
-   *
-   * @param envId env id
-   * @return
-   */
-  int removeOne(Long envId);
+    /**
+     * Remove one
+     *
+     * @param envId env id
+     * @return
+     */
+    int removeOne(Long envId);
 
-  /**
-   * Update one
-   *
-   * @param updatedOne
-   */
-  void updateOne(DataSourceEnv updatedOne);
+    /**
+     * Update one
+     *
+     * @param updatedOne
+     */
+    void updateOne(DataSourceEnv updatedOne);
 
-  /**
-   * Page query
-   *
-   * @param dataSourceEnvVo environment view entity
-   * @return
-   */
-  List<DataSourceEnv> selectByPageVo(DataSourceEnvVo dataSourceEnvVo);
-
-  /**
-   * get DataSourceEnv by envName
-   *
-   * @param envName
-   * @return
-   */
-  DataSourceEnv selectOneByName(@Param("envName") String envName);
+    /**
+     * Page query
+     *
+     * @param dataSourceEnvVo environment view entity
+     * @return
+     */
+    List<DataSourceEnv> selectByPageVo(DataSourceEnvVo dataSourceEnvVo);
 }

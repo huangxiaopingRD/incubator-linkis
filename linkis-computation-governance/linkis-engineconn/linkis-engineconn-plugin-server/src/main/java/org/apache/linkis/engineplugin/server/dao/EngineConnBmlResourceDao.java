@@ -18,7 +18,6 @@
 package org.apache.linkis.engineplugin.server.dao;
 
 import org.apache.linkis.engineplugin.server.entity.EngineConnBmlResource;
-import org.apache.linkis.engineplugin.vo.EnginePluginBMLVo;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -28,18 +27,12 @@ import java.util.List;
 @Mapper
 public interface EngineConnBmlResourceDao {
 
-  List<String> getTypeList();
+    List<EngineConnBmlResource> getAllEngineConnBmlResource(
+            @Param("engineConnType") String engineConnType, @Param("version") String version);
 
-  List<String> getTypeVersionList(@Param("type") String type);
+    void save(@Param("engineConnBmlResource") EngineConnBmlResource engineConnBmlResource);
 
-  List<EngineConnBmlResource> selectByPageVo(EnginePluginBMLVo enginePluginBMLVo);
+    void update(@Param("engineConnBmlResource") EngineConnBmlResource engineConnBmlResource);
 
-  List<EngineConnBmlResource> getAllEngineConnBmlResource(
-      @Param("engineConnType") String engineConnType, @Param("version") String version);
-
-  void save(@Param("engineConnBmlResource") EngineConnBmlResource engineConnBmlResource);
-
-  void update(@Param("engineConnBmlResource") EngineConnBmlResource engineConnBmlResource);
-
-  void delete(@Param("engineConnBmlResource") EngineConnBmlResource engineConnBmlResource);
+    void delete(@Param("engineConnBmlResource") EngineConnBmlResource engineConnBmlResource);
 }

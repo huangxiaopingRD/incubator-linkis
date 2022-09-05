@@ -19,102 +19,96 @@ package org.apache.linkis.engineplugin.server.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class EngineConnBmlResource {
 
-  private Long id;
-  private String engineConnType;
-  private String version;
-  private String fileName;
-  private Long lastModified;
-  private Long fileSize;
-  private String bmlResourceId;
-  private String bmlResourceVersion;
+    private Long id;
+    private String engineConnType;
+    private String version;
+    private String fileName;
+    private Long lastModified;
+    private Long fileSize;
+    private String bmlResourceId;
+    private String bmlResourceVersion;
+    private Date createTime;
+    private Date lastUpdateTime;
 
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date createTime;
+    public Long getId() {
+        return id;
+    }
 
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date lastUpdateTime;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public String getEngineConnType() {
+        return engineConnType;
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public void setEngineConnType(String engineConnType) {
+        this.engineConnType = engineConnType;
+    }
 
-  public String getEngineConnType() {
-    return engineConnType;
-  }
+    public String getVersion() {
+        return version;
+    }
 
-  public void setEngineConnType(String engineConnType) {
-    this.engineConnType = engineConnType;
-  }
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
-  public String getVersion() {
-    return version;
-  }
+    public String getFileName() {
+        return fileName;
+    }
 
-  public void setVersion(String version) {
-    this.version = version;
-  }
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
-  public String getFileName() {
-    return fileName;
-  }
+    public Long getLastModified() {
+        return lastModified;
+    }
 
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
-  }
+    public void setLastModified(Long lastModified) {
+        this.lastModified = lastModified;
+    }
 
-  public Long getLastModified() {
-    return lastModified;
-  }
+    public Long getFileSize() {
+        return fileSize;
+    }
 
-  public void setLastModified(Long lastModified) {
-    this.lastModified = lastModified;
-  }
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
+    }
 
-  public Long getFileSize() {
-    return fileSize;
-  }
+    public String getBmlResourceId() {
+        return bmlResourceId;
+    }
 
-  public void setFileSize(Long fileSize) {
-    this.fileSize = fileSize;
-  }
+    public void setBmlResourceId(String bmlResourceId) {
+        this.bmlResourceId = bmlResourceId;
+    }
 
-  public String getBmlResourceId() {
-    return bmlResourceId;
-  }
+    public String getBmlResourceVersion() {
+        return bmlResourceVersion;
+    }
 
-  public void setBmlResourceId(String bmlResourceId) {
-    this.bmlResourceId = bmlResourceId;
-  }
+    public void setBmlResourceVersion(String bmlResourceVersion) {
+        this.bmlResourceVersion = bmlResourceVersion;
+    }
 
-  public String getBmlResourceVersion() {
-    return bmlResourceVersion;
-  }
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-  public void setBmlResourceVersion(String bmlResourceVersion) {
-    this.bmlResourceVersion = bmlResourceVersion;
-  }
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-  public Date getCreateTime() {
-    return createTime;
-  }
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
+    }
 
-  public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
-  }
-
-  public Date getLastUpdateTime() {
-    return lastUpdateTime;
-  }
-
-  public void setLastUpdateTime(Date lastUpdateTime) {
-    this.lastUpdateTime = lastUpdateTime;
-  }
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
 }

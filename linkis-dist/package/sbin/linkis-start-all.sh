@@ -77,12 +77,22 @@ SERVER_NAME="ps-publicservice"
 SERVER_IP=$PUBLICSERVICE_INSTALL_IP
 startApp
 
+
+
+
 #linkis-cg-linkismanage
 SERVER_NAME="cg-linkismanager"
 SERVER_IP=$MANAGER_INSTALL_IP
 startApp
 
+
 sleep 15
+
+#linkis-ps-cs
+SERVER_NAME="ps-cs"
+SERVER_IP=$CS_INSTALL_IP
+startApp
+
 
 #linkis-cg-entrance
 SERVER_NAME="cg-entrance"
@@ -98,6 +108,22 @@ startApp
 SERVER_NAME="cg-engineplugin"
 SERVER_IP=$ENGINECONN_PLUGIN_SERVER_INSTALL_IP
 startApp
+
+
+if [ "$ENABLE_METADATA_QUERY" == "true" ]; then
+  #linkis-ps-data-source-manager
+  SERVER_NAME="ps-data-source-manager"
+  SERVER_IP=$DATASOURCE_MANAGER_INSTALL_IP
+  startApp
+
+  #linkis-ps-metadataquery
+  SERVER_NAME="ps-metadataquery"
+  SERVER_IP=$METADATA_QUERY_INSTALL_IP
+  startApp
+fi
+
+
+
 
 echo "start-all shell script executed completely"
 
@@ -145,6 +171,11 @@ SERVER_NAME="ps-publicservice"
 SERVER_IP=$PUBLICSERVICE_INSTALL_IP
 checkServer
 
+#linkis-ps-cs
+SERVER_NAME="ps-cs"
+SERVER_IP=$CS_INSTALL_IP
+checkServer
+
 #linkis-cg-linkismanager
 SERVER_NAME="cg-linkismanager"
 SERVER_IP=$MANAGER_INSTALL_IP
@@ -165,5 +196,17 @@ checkServer
 SERVER_NAME="cg-engineplugin"
 SERVER_IP=$ENGINECONN_PLUGIN_SERVER_INSTALL_IP
 checkServer
+
+if [ "$ENABLE_METADATA_QUERY" == "true" ]; then
+  #linkis-ps-data-source-manager
+  SERVER_NAME="ps-data-source-manager"
+  SERVER_IP=$DATASOURCE_MANAGER_INSTALL_IP
+  checkServer
+
+  #linkis-ps-metadataquery
+  SERVER_NAME="ps-metadataquery"
+  SERVER_IP=$METADATA_QUERY_INSTALL_IP
+  checkServer
+fi
 
 echo "Linkis started successfully"

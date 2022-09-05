@@ -87,7 +87,7 @@
         <WbProgress @expandChange="expandChange" :progressData="item">
         </WbProgress>
         <template v-for="subItem in item.engineTypes">
-          <WbProgress v-if="item.expand" :key="subItem.id" @expandChange="expandChange" :progressData="subItem" :children="true" :parentData="item"></WbProgress>
+          <WbProgress v-if="item.expand" :key="subItem.id" @expandChange="expandChange" :progressData="subItem" :children="true"></WbProgress>
         </template>
       </div>
     </template>
@@ -100,11 +100,11 @@
       <!-- 应用列表标签 -->
       <div class="appListTag">
         <div class="tagName">
-          <span class="span-white-space">{{$t('message.linkis.tableColumns.label')}}:</span>
+          <span>{{$t('message.linkis.tableColumns.label')}}</span>
           <Tag v-for="(item, index) in tagTitle" :key="index" color="primary">{{item}}</Tag>
         </div>
         <div class="resourceList">
-          <span class="span-white-space">{{$t('message.linkis.resources')}}:</span>
+          <span>{{$t('message.linkis.resources')}}</span>
           <span v-if="applicationList.usedResource">
             <Tag color="success">{{`${calcCompany(applicationList.usedResource)}`}}(used)</Tag>
             <Tag color="error">{{`${calcCompany(applicationList.maxResource)}`}}(max)</Tag>
@@ -112,13 +112,13 @@
           </span>
         </div>
         <div class="instanceNum" >
-          <span class="span-white-space">{{$t('message.linkis.instanceNum')}}:</span>
+          <span>{{$t('message.linkis.instanceNum')}}</span>
           <span v-if="applicationList.usedResource">{{applicationList.usedResource.instance}} / {{applicationList.maxResource.instance}}</span>
         </div>
       </div>
       <Table  class="table-content" border :width="tableWidth" :columns="columns" :data="tableData">
         <template slot-scope="{row}" slot="engineInstance">
-          <span>{{`${row.instance}`}}</span>
+          <span>{{`${row.engineType}:${row.instance}`}}</span>
         </template>
         <template slot-scope="{row}" slot="usedResource">
           <span>{{`${calcCompany(row.resource.usedResource)}`}}</span>
@@ -465,7 +465,7 @@ export default {
       }
     },
     // 展开和关闭
-    async expandChange(item, isChildren = false, parentData = {},) {
+    async expandChange(item, isChildren = false) {
       // 显示表格
       this.isShowTable = true;
       this.isChildren = isChildren;
@@ -484,7 +484,7 @@ export default {
         this.tagTitle = Object.assign(this.tagTitle, [this.currentParentsData.userCreator, item.engineType])
       }
       let parameter = {
-        userCreator: isChildren ? parentData.userCreator : this.currentParentsData.userCreator,
+        userCreator: this.currentParentsData.userCreator,
         engineType: isChildren ? this.currentEngineData.engineType : undefined
       };
       try {
@@ -528,9 +528,6 @@ export default {
     },
     // 时间格式转换
     timeFormat(row) {
-      if (row.startTime.indexOf('CST') > 0) {
-        return moment(new Date(row.startTime)).utc().subtract(6, 'hour').format('YYYY-MM-DD HH:mm:ss')
-      }
       return moment(new Date(row.startTime)).format('YYYY-MM-DD HH:mm:ss')
     },
     calcCompany(resource) {

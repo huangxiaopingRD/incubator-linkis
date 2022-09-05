@@ -75,7 +75,7 @@
           placement="right"
           popper-class="we-poptip">
           <div @click.stop="openPopup('download')">
-            <i class="material-icons">cloud_download</i>
+            <SvgIcon :style="{ 'font-size': '20px' }" icon-class="common" color="#515a6e" />
             <span v-if="isIconLabelShow" :title="$t('message.common.download')" class="v-toolbar-icon">{{ $t('message.common.download') }}</span>
           </div>
           <div slot="content">
@@ -198,7 +198,6 @@ import resultsExport from './resultsExport.vue';
 import tableRow from './tableRow.vue';
 import mixin from '@/common/service/mixin';
 import api from '@/common/service/api';
-import 'material-design-icons/iconfont/material-icons.css';
 export default {
   components: {
     resultsExport,

@@ -6,7 +6,7 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,33 +17,26 @@
 
 package org.apache.linkis.engineconn.computation.executor.cs
 
+import org.apache.commons.lang3.StringUtils
 import org.apache.linkis.common.io.FsPath
-import org.apache.linkis.common.utils.{Logging, Utils}
+import org.apache.linkis.common.utils.Logging
 import org.apache.linkis.cs.client.service.CSTableService
 import org.apache.linkis.cs.common.entity.metadata.{CSColumn, CSTable}
 import org.apache.linkis.storage.resultset.StorageResultSetWriter
 import org.apache.linkis.storage.resultset.table.{TableMetaData, TableRecord, TableResultSet}
 import org.apache.linkis.storage.utils.StorageUtils
 
-import org.apache.commons.lang3.StringUtils
-
 import java.util.Date
 
-class CSTableResultSetWriter(
-    tableResult: TableResultSet,
-    maxCacheSize: Long,
-    storePath: FsPath,
-    contextIDStr: String,
-    nodeName: String,
-    alias: String
-) extends StorageResultSetWriter[TableMetaData, TableRecord](tableResult, maxCacheSize, storePath)
-    with Logging {
+class CSTableResultSetWriter(tableResult: TableResultSet, maxCacheSize: Long,
+                             storePath: FsPath, contextIDStr: String, nodeName: String, alias: String) extends StorageResultSetWriter[TableMetaData, TableRecord](tableResult, maxCacheSize, storePath) with Logging {
 
   override def toString: String = {
-    Utils.tryCatch {
+    try {
       registerToCS
-    } { case t: Throwable =>
-      logger.info("Failed to register tmp table", t)
+    } catch {
+      case t: Throwable =>
+        logger.info("Failed to register tmp table", t)
     }
     super.toString
   }
@@ -76,5 +69,4 @@ class CSTableResultSetWriter(
       logger.info("Finished to register resultSet to cs")
     }
   }
-
 }
